@@ -6,6 +6,21 @@ from sqlalchemy import or_
 
 routes = Blueprint('routes', __name__)
 
+@routes.route('/', methods=['GET'])
+def home():
+    return jsonify({
+        'message': 'API Management Backend funcionando correctamente',
+        'version': '1.0',
+        'endpoints': [
+            'GET /alumnos',
+            'POST /alumnos', 
+            'GET /alumnos/buscar',
+            'PUT /alumnos/<id>',
+            'DELETE /alumnos/<id>',
+            'GET /alumnos/alertas'
+        ]
+    })
+    
 # 🔹 Función de autenticación por token
 def token_required(f):
     @wraps(f)
@@ -33,14 +48,6 @@ def alumno_to_dict(alumno):
             'relacion': alumno.telefono_emergencia.relacion if alumno.telefono_emergencia else None
         }
     }
-
-# 🔹 Login
-# @routes.route('/login', methods=['POST'])
-# def login():
-#     data = request.get_json()
-#     if data.get('username') == 'admin' and data.get('password') == 'master123':
-#         return jsonify({'token': 'master123', 'message': 'Login successful'}), 200
-#     return jsonify({'message': 'Invalid credentials'}), 401
 
 # 🔹 Crear Alumno
 @routes.route('/alumnos', methods=['POST'])
