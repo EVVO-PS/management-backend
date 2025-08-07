@@ -1,6 +1,6 @@
 from flask import Flask
-from models.models import db, Alumno
-from routes.routes import routes
+from app.models.models import db, Alumno
+from app.routes.routes import routes
 from flask_cors import CORS
 import os
 
