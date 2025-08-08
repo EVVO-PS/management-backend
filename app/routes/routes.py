@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models.models import db, Alumno, Domicilio, TelefonoEmergencia
+from app.models.models import db, Alumno, Domicilio, TelefonoEmergencia
 from datetime import datetime, timedelta
 from functools import wraps
 from sqlalchemy import or_
